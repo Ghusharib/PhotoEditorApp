@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
 import java.security.spec.ECField;
 
 public class BrightnessContrastActivity extends AppCompatActivity {
@@ -116,19 +121,24 @@ public class BrightnessContrastActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     System.out.println("No photo selected");
                 }
-                DefaultCommands.addBitmapToIntent(intent, bitmap);
+                String filePath = DefaultCommands.saveImage(bitmap, activity);
+                intent.putExtra("filePath", filePath);
                 startActivity(intent);
             }
         });
 
         //Set the imageView of the current activity to the image from the main activity
-        Bitmap bitmap = null;
         try {
-            bitmap = DefaultCommands.getImageFromIntent(this.getIntent());
+            Bitmap bitmap = null;
+            File imgFile = new File(this.getIntent().getStringExtra("filePath"));
+            if(imgFile.exists()){
+                bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            }
+            imgFile.delete();
             image = bitmap;
             imageView.setImageBitmap(bitmap);
         } catch (Exception e) {
-            System.out.println("No photo found!");
+            Toast.makeText(this, "Error transferring photo between activities", Toast.LENGTH_SHORT).show();
         }
 
     }

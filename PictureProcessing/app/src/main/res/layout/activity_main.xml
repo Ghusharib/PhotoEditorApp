@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="339dp"
-        android:layout_height="420dp"
+        android:layout_width="298dp"
+        android:layout_height="365dp"
         android:layout_marginStart="125dp"
         android:layout_marginLeft="125dp"
         android:layout_marginTop="44dp"
@@ -51,12 +51,15 @@
         android:layout_height="34dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.4" />
 
     <ImageButton
         android:id="@+id/turnLeftBtn"
@@ -96,16 +99,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="349dp"
         android:layout_marginLeft="349dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginRight="55dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:clickable="true"
         app:backgroundTint="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_save" />
-
     <ImageButton
         android:id="@+id/vertFlipBtn"
         android:layout_width="45dp"
